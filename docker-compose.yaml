@@ -1,0 +1,17 @@
+version: '2'
+services:
+    ssh:
+        image: gupalo/ssh
+        container_name: ssh
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        restart: 'always'
+        networks: ['default']
+        volumes:
+            - '/root/.ssh/'
+        ports:
+            - '0.0.0.0:11223:22'
+networks:
+    default:
+        driver: bridge
